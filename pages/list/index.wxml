@@ -1,0 +1,22 @@
+<scroll-view style='height:100vh;'>
+<view class='sort'>
+  <view class='item' bindtap="sortFun" data-data="1">
+  <text class='{{sortActive==1?"active":""}}'>价格</text><image class='item-active' src='/images/triangle.png' mode="aspectFit"></image></view>
+  <view class='item' bindtap="sortFun" data-data="2">
+  <text class='{{sortActive==2?"active":""}}'>口味</text><image src='/images/triangle_2.png' mode="aspectFit"></image></view>
+  <view class='item' bindtap="sortFun" data-data="3">
+  <text class='{{sortActive==3?"active":""}}'>销量</text><image src='/images/triangle_2.png' mode="aspectFit"></image></view>
+</view>
+<scroll-view scroll-y style='height:100%;'>
+<view class='list'>
+  <view class='item' wx:for="{{list}}">
+      <image class='product' src='/images/img1.jpeg'></image>
+      <text class='text'>热卖款：四重奏蛋糕-2磅188/3磅238元/4磅278...</text>
+      <view class='price'>
+        <text>￥132</text>
+        <image src='/images/shopping_cart.png'></image>
+      </view>
+    </view>
+</view>
+</scroll-view>
+</scroll-view>

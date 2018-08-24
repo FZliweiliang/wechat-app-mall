@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<scroll-view class="container" scroll-y>
+ <swiper 
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" 
+    interval="{{interval}}" 
+    duration="{{duration}}"
+    >
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image src='{{item}}' style='width:100%;height:240px;' />
+        </swiper-item>
+      </block>
+  </swiper>
+  <view class='icon'>
+    <navigator hover-class="none" url="/pages/list/index?title=生日&id=1">
+      <image src='/images/birthday.png' mode="aspectFit"></image>
+      <text>生日</text>
+    </navigator>
+    <navigator hover-class="none" url="/pages/list/index?title=节日&id=1">
+      <image src='/images/festival.png' mode="aspectFit"></image>
+      <text>节日</text>
+    </navigator>
+    <navigator hover-class="none" url="/pages/list/index?title=婚礼&id=1">
+      <image src='/images/wedding.png' mode="aspectFit"></image>
+      <text>婚礼</text>
+    </navigator>
+    <navigator hover-class="none" url="/pages/list/index?title=party&id=1">
+      <image src='/images/party.png' mode="aspectFit"></image>
+      <text>party</text>
+    </navigator>
+  </view>
+  <!-- <view class='title'>
+    <text class='cn'>主题</text>
+    <text class='en'>Theme</text>d5e7f5d5e7f5d5e7f5d5e7f5d5e7f5d5e7f5d5e7f5d5e7f5d5e7f5d5e7f5
+  </view> -->
+  <!-- <view class='img'>
+    <image src='/images/banner_2.png' mode="widthFix"></image>
+    <image src='/images/banner_3.png' mode="widthFix"></image>
+    <image src='/images/banner_4.png' mode="widthFix"></image>
+  </view> -->
+  <view class='title'>
+    <text class='cn'>猜你喜欢</text>
+    <text class='en'>Lovely</text>
+  </view>
+  <view class='list'>
+    <view class='item' wx:for="{{list}}">
+      <navigator hover-class="none" url="/pages/details/index?id=1">
+        <image class='product' src='/images/img1.jpeg'></image>
+        <text class='text'>热卖款：四重奏蛋糕-2磅188/3磅238元/4磅278...</text>
+      </navigator>
+      <view class='price'>
+        <text>￥132</text>
+        <image src='/images/home_page n.png'></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>

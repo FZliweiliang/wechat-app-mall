@@ -1,0 +1,33 @@
+<view style='height:100vh;'>
+<scroll-view scroll-y style='height:92vh;'>
+  <view class='list'>
+    <view class='item'>
+      <view class='left'>
+        <view>176****6038 李肥宅 收</view>
+        <view>广东省 深圳市 福田区 益田路5033号平安金融中心2901室</view>
+      </view>
+      <view class='edit'>
+        <image src='/images/edit.png'></image>
+      </view>
+      <view class='choice'>
+        <image src='/images/choice_n.png'></image>
+      </view>
+    </view>
+     <view class='item'>
+      <view class='left'>
+        <view>176****6038 李肥宅 收</view>
+        <view>广东省 深圳市 福田区 益田路5033号平安金融中心2901室</view>
+      </view>
+      <view class='edit'>
+        <image src='/images/edit.png'></image>
+      </view>
+      <view class='choice'>
+        <image src='/images/choice_y.png'></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<navigator url="/pages/addressAdd/index" class='btn'>
+ 新增收货地址
+</navigator>
+</view>
