@@ -1,0 +1,53 @@
+# 微信小程序实现移动端商城
+
+## 说明
+```
+>  如有问题或者遇到坑请直接在 Issues 中提，或者可以加我的QQ 212181324
+
+>  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
+
+>  部署详解:http://blog.csdn.net/qq_28027903/article/details/77929618
+
+>  此项目会一直持续更新 后期会使用node提供服务
+```
+
+### 项目截图:
+
+<img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/1.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/2.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/3.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/4.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/5.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/6.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/7.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/8.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/9.png" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/10.png" width="320px" style="display:inline;">
+
+
+## 项目布局
+```
+|-- images								// 公共图片
+|-- lib								    // 公共文件
+|-- pages								// 页面
+|   |-- index						    // 首页
+|   |-- list						    // 商品列表
+|   |-- details						    // 商品详情
+|   |-- user						    // 个人中心
+|   |-- order						    // 我的订单
+|   |-- coupon						    // 优惠券
+|   |-- cart						    // 购物车
+|   |-- addressList						// 我的地址
+|   |-- addressAdd			            // 添加地址
+|-- README.md							// 说明
+```
+
+## 开发环境：
+调试基础库 2.0.4
+
+## 支持作者
+```
+>  你的支持将是作者最大的动力（蚂蚁再小也是肉😁）
+```
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/zfb.jpg" width="320px" style="display:inline;">
+<img src="https://github.com/474782977/wechat-weapp-mall/blob/master/screenshot/wx.png" width="320px" style="display:inline;">
