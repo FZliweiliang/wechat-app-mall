@@ -47,6 +47,7 @@
   flex: 0 0 auto;
   height: 94px;
   width: 94px;
+  padding-right:10px;
 }
 
 .list .content .text{

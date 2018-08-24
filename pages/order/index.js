@@ -8,7 +8,7 @@ Page({
     tabIndex: 1,
     list: [{ //商品列表
       id: 2,
-      img: '/images/master_graph_2.png',
+      img: '/images/img1.jpeg',
       name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
       spec: "2磅，+19.9元得水果（中盒）…",
       price: 999.00,
@@ -17,7 +17,7 @@ Page({
     },
     {
       id: 3,
-      img: '/images/master_graph_2.png',
+      img: '/images/img1.jpeg',
       name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
       spec: "2磅，+19.9元得水果（中盒）…",
       price: 999.01,
@@ -26,7 +26,7 @@ Page({
     },
     {
       id: 4,
-      img: '/images/master_graph_2.png',
+      img: '/images/img1.jpeg',
       name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
       spec: "2磅，+19.9元得水果（中盒）…",
       price: 999.02,
@@ -35,7 +35,7 @@ Page({
     },
     {
       id: 5,
-      img: '/images/master_graph_2.png',
+      img: '/images/img1.jpeg',
       name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
       spec: "2磅，+19.9元得水果（中盒）…",
       price: 999.03,
@@ -44,7 +44,7 @@ Page({
     },
     {
       id: 6,
-      img: '/images/master_graph_2.png',
+      img: '/images/img1.jpeg',
       name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
       spec: "2磅，+19.9元得水果（中盒）…",
       price: 999.04,
