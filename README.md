@@ -6,7 +6,7 @@
 
 >  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
 
->  部署详解:http://blog.csdn.net/qq_28027903/article/details/77929618
+>  部署详解:https://blog.csdn.net/qq_28027903/article/details/82109408
 
 >  此项目会一直持续更新 后期会使用node提供服务
 
