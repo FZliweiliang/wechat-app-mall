@@ -9,6 +9,8 @@
 >  部署详解:http://blog.csdn.net/qq_28027903/article/details/77929618
 
 >  此项目会一直持续更新 后期会使用node提供服务
+
+>  提示小程序大于2M可以把screenshot文件夹删除
 ```
 
 ### 项目截图:
