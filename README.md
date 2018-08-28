@@ -6,9 +6,11 @@
 
 >  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
 
->  部署详解:http://blog.csdn.net/qq_28027903/article/details/77929618
+>  部署详解:https://blog.csdn.net/qq_28027903/article/details/82109408
 
 >  此项目会一直持续更新 后期会使用node提供服务
+
+>  提示小程序大于2M可以把screenshot文件夹删除
 ```
 
 ### 项目截图:
@@ -27,19 +29,19 @@
 
 ## 项目布局
 ```
-|-- images								// 公共图片
-|-- lib								    // 公共文件
-|-- pages								// 页面
-|   |-- index						    // 首页
-|   |-- list						    // 商品列表
-|   |-- details						    // 商品详情
-|   |-- user						    // 个人中心
-|   |-- order						    // 我的订单
-|   |-- coupon						    // 优惠券
-|   |-- cart						    // 购物车
-|   |-- addressList						// 我的地址
-|   |-- addressAdd			            // 添加地址
-|-- README.md							// 说明
+|-- images               // 公共图片
+|-- lib                  // 公共文件
+|-- pages                // 页面
+|   |-- index            // 首页
+|   |-- list             // 商品列表
+|   |-- details	         // 商品详情
+|   |-- user             // 个人中心
+|   |-- order            // 我的订单
+|   |-- coupon           // 优惠券
+|   |-- cart             // 购物车
+|   |-- addressList      // 我的地址
+|   |-- addressAdd       // 添加地址
+|-- README.md            // 说明
 ```
 
 ## 开发环境：
