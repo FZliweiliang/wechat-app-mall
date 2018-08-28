@@ -23,7 +23,7 @@
 <img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/8.png" width="320px" style="display:inline;">
 <img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/9.png" width="320px" style="display:inline;">
 <img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/10.png" width="320px" style="display:inline;">
-
+<img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/11.png" width="320px" style="display:inline;">
 
 ## 项目布局
 ```
