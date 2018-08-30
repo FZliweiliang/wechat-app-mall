@@ -9,8 +9,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     imgUrls: [
-      '/images/banner.jpg',
-      '/images/banner2.jpg',
+      'https://wx.yogalt.com/file/images/banner.jpg',
+      'https://wx.yogalt.com/file/images/banner2.jpg',
     ],
     indicatorDots: true,
     autoplay: true,
@@ -25,6 +25,14 @@ Page({
     })
   },
   onLoad: function () {
+
+    wx.request({
+      url: 'https://wx.yogalt.com/api/v1/home/bannerList', //仅为示例，并非真实的接口地址
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
+
     let list = []
     for(let i=0;i<100;i++){
       list.push({})

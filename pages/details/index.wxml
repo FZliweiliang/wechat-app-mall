@@ -63,7 +63,7 @@
 <view class='popup' wx:if="{{specIs}}">
     <view class='title'>
       <view class='img'>
-        <image src='/images/img1.jpeg'></image>
+        <image src='https://wx.yogalt.com/file/images/img1.jpeg'></image>
       </view>
       <view class='text'>
         <text>热卖款：四重奏蛋糕2磅/3磅/4磅...</text>

@@ -6,9 +6,9 @@ Page({
    */
   data: {
     imgUrls: [
-      '/images/img1.jpeg',
-      '/images/img2.jpeg',
-      '/images/img3.jpeg'
+      'https://wx.yogalt.com/file/images/img1.jpeg',
+      'https://wx.yogalt.com/file/images/img2.jpeg',
+      'https://wx.yogalt.com/file/images/img3.jpeg'
     ],
     indicatorDots: true,
     autoplay: true,

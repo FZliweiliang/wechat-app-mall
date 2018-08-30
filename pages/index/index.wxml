@@ -46,7 +46,7 @@
   <view class='list'>
     <view class='item' wx:for="{{list}}">
       <navigator hover-class="none" url="/pages/details/index?id=1">
-        <image class='product' src='/images/img1.jpeg'></image>
+        <image class='product' src='https://wx.yogalt.com/file/images/img1.jpeg'></image>
         <text class='text'>热卖款：四重奏蛋糕-2磅188/3磅238元/4磅278...</text>
       </navigator>
       <view class='price'>

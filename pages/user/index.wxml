@@ -1,7 +1,7 @@
 <scroll-view scroll-y style='height:100vh;'>
   <view class='top'>
     <navigator url="/pages/bindPhone/index" class='img'>
-      <image src='/images/img4.jpg'></image>
+      <image src='https://wx.yogalt.com/file/images/img4.jpg'></image>
       <text>李四</text>
     </navigator>
   </view>
