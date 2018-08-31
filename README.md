@@ -6,7 +6,9 @@
 
 >  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
 
->  博客地址:https://blog.csdn.net/qq_28027903/article/details/82109408
+>  博客地址:https://juejin.im/post/5b836d056fb9a019f671320f
+
+>  配置HTTPS：https://juejin.im/post/5b88b58151882542db3bedf7
 
 >  服务端:https://github.com/FZliweiliang/wechat-app-mall-server(正在开发中)
 
