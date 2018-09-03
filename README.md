@@ -4,7 +4,7 @@
 ```
 >  如有问题或者遇到坑请直接在 Issues 中提，或者可以加我的QQ 212181324
 
->  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
+>  如果对您有帮助，您可以点右上角 "Star&fork" 支持一下 谢谢！ ^_^
 
 >  博客地址:https://juejin.im/post/5b836d056fb9a019f671320f
 
@@ -50,10 +50,3 @@
 
 ## 开发环境：
 调试基础库 2.0.4
-
-## 支持作者
-```
->  你的支持将是作者最大的动力（蚂蚁再小也是肉😁）
-```
-<img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/zfb.jpg" width="320px" style="display:inline;">
-<img src="https://github.com/474782977/wechat-app-mall/blob/master/screenshot/wx.png" width="320px" style="display:inline;">
