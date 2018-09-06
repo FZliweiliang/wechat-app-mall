@@ -16,7 +16,8 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    list:[{},{},{},{},{},]
+    list:[],
+    page:1
   },
   //事件处理函数
   bindViewTap: function() {
@@ -24,22 +25,106 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-
+  lower:function(e){
+    console.log(e)
+    this.getList()
+  },
+  delFun:function(e){
+    console.log(e)
     wx.request({
-      url: 'https://wx.yogalt.com/api/v1/home/bannerList', //仅为示例，并非真实的接口地址
-      success: function (res) {
-        console.log(res.data)
+      url: 'https://wx.yogalt.com/api/v1/admin/delItem',
+      data: {
+        id: e.currentTarget.dataset.id,
+      },
+      success: (res) => {
+        console.log(res)
+      }
+    })
+  },
+  getList: function(){
+    wx.request({
+      url: 'https://wx.yogalt.com/api/v1/home/getHotList',
+      data: {
+        page: this.data.page
+      },
+      success: (res) => {
+        if (res.data.code == 200&&res.data.data.list.length>0){
+          this.data.page++
+          let list = this.data.list
+          for (let i = 0; i < res.data.data.list.length; i++) {
+            list.push(res.data.data.list[i])
+          }
+          this.setData({
+            list: list,
+            page: this.data.page
+          })
+          console.log(this.data)
+        }
+      }
+    })
+  },
+  onLoad: function () {
+    this.getList()
+    wx.request({
+      url: 'https://wx.yogalt.com/api/v1/home/bannerList',
+      data: {
+        x: '1212',
+        y: '121212'
+      },
+      success: (res)=>{
+        this.setData({
+          imgUrls: res.data
+        })
       }
     })
 
-    let list = []
-    for(let i=0;i<100;i++){
-      list.push({})
-      this.setData({
-        list: list
-      })
-    }
+    
+    wx.request({
+      url: 'https://wx.yogalt.com/api/v1/admin/getClassList',
+      success: (res) => {
+        console.log(res.data)
+      }
+    })
+    
+
+    // wx.request({
+    //   url: 'https://wx.yogalt.com/api/v1/admin/addClass',
+    //   method: 'POST',
+    //   data: {
+    //     cate_name: 'party',
+    //     cate_order: 4,
+    //   },
+    //   header: {
+    //     'X-Requested-With': 'XMLHttpRequest',
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success: (res) => {
+    //     console.log(res.data)
+    //   }
+    // })
+
+    // wx.request({
+    //   url: 'https://wx.yogalt.com/api/v1/admin/addItem',
+    //   method:'POST',
+    //   data:{
+    //     title:"party大蛋糕",
+    //     img:"https://wx.yogalt.com/file/images/img1.jpeg",
+    //     spec:"1221123",
+    //     price:'99.2',
+    //     num:999,
+    //     content:'2132123',
+    //     html: '2132123',
+    //     category:"5b8f4612afb7c17788e11998|party",
+    //      is_hot:true
+    //   },
+    //   header:{
+    //     'X-Requested-With': 'XMLHttpRequest',
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success: (res) => {
+    //     console.log(res.data)
+    //   }
+    // })
     
     if (app.globalData.userInfo) {
       this.setData({

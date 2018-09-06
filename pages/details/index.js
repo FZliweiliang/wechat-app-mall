@@ -43,7 +43,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options)
+    wx.request({
+      url: 'https://wx.yogalt.com/api/v1/home/getItem',
+      data:{
+        id:options.id
+      },
+      success: (res) => {
+        console.log(res.data)
+      }
+    })
   },
 
   /**

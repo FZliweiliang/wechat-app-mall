@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<scroll-view class="container" scroll-y>
+<scroll-view class="container" scroll-y  bindscrolltolower="lower">
  <swiper 
     indicator-dots="{{indicatorDots}}"
     autoplay="{{autoplay}}" 
@@ -8,7 +8,7 @@
     >
       <block wx:for="{{imgUrls}}">
         <swiper-item>
-          <image src='{{item}}' style='width:100%;height:240px;' />
+          <image src='{{item.img}}' style='width:100%;height:240px;' />
         </swiper-item>
       </block>
   </swiper>
@@ -45,14 +45,17 @@
   </view>
   <view class='list'>
     <view class='item' wx:for="{{list}}">
-      <navigator hover-class="none" url="/pages/details/index?id=1">
-        <image class='product' src='https://wx.yogalt.com/file/images/img1.jpeg'></image>
-        <text class='text'>热卖款：四重奏蛋糕-2磅188/3磅238元/4磅278...</text>
+      <navigator hover-class="none" url="/pages/details/index?id={{item._id}}">
+        <image class='product' src='{{item.img}}'></image>
+        <text class='text'>{{item.title}}.</text>
       </navigator>
       <view class='price'>
-        <text>￥132</text>
+        <text>￥{{item.price}}</text>
         <image src='/images/home_page n.png'></image>
       </view>
     </view>
+  </view>
+  <view  wx:for="{{list}}" bindtap='delFun' data-id="{{item._id}}">
+  {{item.title}}
   </view>
 </scroll-view>
