@@ -1,9 +1,11 @@
 <scroll-view scroll-y style='height:100vh;'>
   <view class='top'>
-    <navigator url="/pages/bindPhone/index" class='img'>
-      <image src='https://wx.yogalt.com/file/images/img4.jpg'></image>
-      <text>李四</text>
-    </navigator>
+    <!-- <navigator url="/pages/bindPhone/index" class='img'>
+      
+    </navigator> -->
+    <view>
+       <view class='img'><open-data type="userAvatarUrl"></open-data></view><view class='text'><open-data type="userNickName"></open-data></view>
+    </view>
   </view>
   <navigator url="/pages/order/index" class='item'>
     <view class='left'>

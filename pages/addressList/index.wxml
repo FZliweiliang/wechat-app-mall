@@ -1,27 +1,18 @@
 <view style='height:100vh;'>
 <scroll-view scroll-y style='height:92vh;'>
   <view class='list'>
-    <view class='item'>
+    <view class='item' wx:for="{{list}}">
       <view class='left'>
-        <view>176****6038 李肥宅 收</view>
-        <view>广东省 深圳市 福田区 益田路5033号平安金融中心2901室</view>
+        <view>{{item.mobile}} {{item.name}} 收</view>
+        <view>{{item.city[0]}} {{item.city[1]}} {{item.city[2]}} {{item.detailed}}</view>
       </view>
-      <view class='edit'>
+      <navigator url="/pages/addressAdd/index?city={{item.city[0]}},{{item.city[1]}},{{item.city[2]}}&mobile={{item.mobile}}&name={{item.name}}&detailed={{item.detailed}}&id={{item._id}}"  class='edit'>
         <image src='/images/edit.png'></image>
-      </view>
-      <view class='choice'>
+      </navigator>
+      <view class='choice' wx:if="{{item._id != id}}" bindtap='defaultFun' data-item="{{item}}">
         <image src='/images/choice_n.png'></image>
       </view>
-    </view>
-     <view class='item'>
-      <view class='left'>
-        <view>176****6038 李肥宅 收</view>
-        <view>广东省 深圳市 福田区 益田路5033号平安金融中心2901室</view>
-      </view>
-      <view class='edit'>
-        <image src='/images/edit.png'></image>
-      </view>
-      <view class='choice'>
+       <view class='choice' wx:else>
         <image src='/images/choice_y.png'></image>
       </view>
     </view>

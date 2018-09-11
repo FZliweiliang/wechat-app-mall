@@ -29,30 +29,14 @@ Page({
     console.log(e)
     this.getList()
   },
-  delFun:function(e){
-    console.log(e)
-    wx.request({
-      url: 'https://wx.yogalt.com/api/v1/admin/delItem',
-      data: {
-        id: e.currentTarget.dataset.id,
-      },
-      success: (res) => {
-        console.log(res)
-      }
-    })
-  },
   getList: function(){
-    wx.request({
-      url: 'https://wx.yogalt.com/api/v1/home/getHotList',
-      data: {
-        page: this.data.page
-      },
-      success: (res) => {
-        if (res.data.code == 200&&res.data.data.list.length>0){
+    app.http('v1/home/getHotList', { page: this.data.page})
+      .then(res => {
+        if (res.code == 200 && res.data.list.length > 0) {
           this.data.page++
           let list = this.data.list
-          for (let i = 0; i < res.data.data.list.length; i++) {
-            list.push(res.data.data.list[i])
+          for (let i = 0; i < res.data.list.length; i++) {
+            list.push(res.data.list[i])
           }
           this.setData({
             list: list,
@@ -60,32 +44,33 @@ Page({
           })
           console.log(this.data)
         }
+      })
+    wx.request({
+      url: 'https://wx.yogalt.com/api/',
+      data: {
+        page: this.data.page
+      },
+      success: (res) => {
+        
       }
     })
   },
   onLoad: function () {
+    let app = getApp()
     this.getList()
-    wx.request({
-      url: 'https://wx.yogalt.com/api/v1/home/bannerList',
-      data: {
-        x: '1212',
-        y: '121212'
-      },
-      success: (res)=>{
-        this.setData({
-          imgUrls: res.data
-        })
-      }
-    })
 
-    
-    wx.request({
-      url: 'https://wx.yogalt.com/api/v1/admin/getClassList',
-      success: (res) => {
-        console.log(res.data)
-      }
+    app.http('v1/home/bannerList')
+    .then(res=>{
+      this.setData({
+        imgUrls: res.data
+      })
     })
-    
+    // wx.request({
+    //   url: 'https://wx.yogalt.com/api/v1/admin/getClassList',
+    //   success: (res) => {
+    //     console.log(res.data)
+    //   }
+    // })
 
     // wx.request({
     //   url: 'https://wx.yogalt.com/api/v1/admin/addClass',

@@ -1,16 +1,33 @@
 //app.js
 App({
+  http:function(){
+    
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res)
+        wx.request({
+          url: 'https://wx.yogalt.com/api/v1/wx/getUser',
+          data:{
+            code:res.code
+          },
+          success: (res) => {
+            var app = getApp()
+            app.globalData.openid = res.data.data.openid
+            app.globalData.userInfo = res.data.data
+            if (!res.data.data.mobile){
+              wx.reLaunch({
+                url: "/pages/bindPhone/index"
+              });
+            }
+          }
+        })
       }
     })
     // 获取用户信息
@@ -33,8 +50,44 @@ App({
         }
       }
     })
+
+  },
+  http: (url, data='', method="GET") => { //封装http请求
+    console.log(url, data, method)
+    const apiUrl = 'https://wx.yogalt.com/api/' //请求域名
+
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: apiUrl + url,
+        data: data,
+        method: method,
+        success: function (res) {
+          if(res.data.code != 200){
+            wx.showModal({
+              title: '提示',
+              content: res.data.message,
+              success: function (res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                } else if (res.cancel) {
+                  console.log('用户点击取消')
+                }
+              }
+            })
+          }
+          resolve(res.data)
+        },
+        fail: function (res) {
+          reject(res);
+        },
+        complete: function () {
+          console.log('complete');
+        }
+      })
+    })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid:null
   }
 })

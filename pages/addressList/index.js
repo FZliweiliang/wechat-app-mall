@@ -1,18 +1,35 @@
 // pages/addressList/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    list:[],
+    id:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  defaultFun:function(data){
+    app.http('v1/user/defaultCity', {
+      openid: app.globalData.openid,
+      id: data.currentTarget.dataset.item._id
+    }, 'POST')
+      .then(res => {
+        app.globalData.userInfo.address = res.data
+        this.setData({
+          id: res.data._id
+        })
+      })
+  },
   onLoad: function (options) {
-  
+    this.setData({
+      id: app.globalData.userInfo.address._id
+    })
+   
   },
 
   /**
@@ -26,7 +43,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    app.http('v1/user/cityList', {
+      openid: app.globalData.openid
+    })
+      .then(res => {
+        this.setData({
+          list: res.data
+        })
+      })
   },
 
   /**

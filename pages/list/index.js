@@ -1,17 +1,20 @@
 // pages/list/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [{}, {}, {}, {}, {},],
+    list: [],
     sortActive:0,
     sortState: true,
     price:false,
     flavor:false,
-    mount:false
+    mount:false,
+    page:1
   },
+  
   sortFun(data) {
     this.setData({
       sortActive: data.currentTarget.dataset.data,
@@ -34,6 +37,26 @@ Page({
 
     }
   },
+  getList:function(data){
+    app.http('v1/home/getList', {
+      page: this.data.page,
+      category: data.id
+    })
+      .then(res => {
+        if (res.code == 200 && res.data.list.length > 0) {
+          this.data.page++
+          let list = this.data.list
+          for (let i = 0; i < res.data.list.length; i++) {
+            list.push(res.data.list[i])
+          }
+          this.setData({
+            list: list,
+            page: this.data.page
+          })
+          console.log(this.data)
+        }
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -42,13 +65,7 @@ Page({
       title: e.title//页面标题为路由参数
     })
     console.log(e)
-    let list = []
-    for (let i = 0; i < 20; i++) {
-      list.push({})
-      this.setData({
-        list: list
-      })
-    }
+    this.getList(e)
   },
   
   /**

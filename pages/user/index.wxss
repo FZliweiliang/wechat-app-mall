@@ -1,20 +1,19 @@
 .top{
  height: 40vh;
+ border-bottom: 3px solid #dedede;
+ background: #fff;
  display: flex;
  justify-content: center;
  align-items: center;
- border-bottom: 3px solid #dedede;
- background: #fff;
 }
-.top image{
+.top .img{
   width: 80px;
   height: 80px;
   overflow: hidden;
   border-radius: 50%;
 }
 
-.top .img text{
-  display: block;
+.top .text{
   text-align: center;
   font-size: 14px;
   color: #333333;

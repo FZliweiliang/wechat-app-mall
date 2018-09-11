@@ -13,19 +13,19 @@
       </block>
   </swiper>
   <view class='icon'>
-    <navigator hover-class="none" url="/pages/list/index?title=生日&id=1">
+    <navigator hover-class="none" url="/pages/list/index?title=生日&id=5b8e37e34b640a63b33272dc">
       <image src='/images/birthday.png' mode="aspectFit"></image>
       <text>生日</text>
     </navigator>
-    <navigator hover-class="none" url="/pages/list/index?title=节日&id=1">
+    <navigator hover-class="none" url="/pages/list/index?title=节日&id=5b8f45f2afb7c17788e11994">
       <image src='/images/festival.png' mode="aspectFit"></image>
       <text>节日</text>
     </navigator>
-    <navigator hover-class="none" url="/pages/list/index?title=婚礼&id=1">
+    <navigator hover-class="none" url="/pages/list/index?title=婚礼&id=5b8f4603afb7c17788e11996">
       <image src='/images/wedding.png' mode="aspectFit"></image>
       <text>婚礼</text>
     </navigator>
-    <navigator hover-class="none" url="/pages/list/index?title=party&id=1">
+    <navigator hover-class="none" url="/pages/list/index?title=party&id=5b8f4612afb7c17788e11998">
       <image src='/images/party.png' mode="aspectFit"></image>
       <text>party</text>
     </navigator>
@@ -54,8 +54,5 @@
         <image src='/images/home_page n.png'></image>
       </view>
     </view>
-  </view>
-  <view  wx:for="{{list}}" bindtap='delFun' data-id="{{item._id}}">
-  {{item.title}}
   </view>
 </scroll-view>

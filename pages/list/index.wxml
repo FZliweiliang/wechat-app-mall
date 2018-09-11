@@ -10,11 +10,13 @@
 <scroll-view scroll-y style='height:100%;'>
 <view class='list'>
   <view class='item' wx:for="{{list}}">
-      <image class='product' src='/images/img1.jpeg'></image>
-      <text class='text'>热卖款：四重奏蛋糕-2磅188/3磅238元/4磅278...</text>
+      <navigator hover-class="none" url="/pages/details/index?id={{item._id}}">
+        <image class='product' src='{{item.img}}'></image>
+        <text class='text'>{{item.title}}.</text>
+      </navigator>
       <view class='price'>
-        <text>￥132</text>
-        <image src='/images/shopping_cart.png'></image>
+        <text>￥{{item.price}}</text>
+        <image src='/images/home_page n.png'></image>
       </view>
     </view>
 </view>
