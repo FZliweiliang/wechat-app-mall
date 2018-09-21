@@ -39,7 +39,6 @@ Page({
   submitFun: function () {
     if (this.data.addressIs){ //添加
       app.http('v1/user/addCity', {
-        openid: app.globalData.openid,
         name: this.data.name,
         mobile: this.data.mobile,
         detailed: this.data.detailed,
@@ -54,7 +53,6 @@ Page({
         })
     }else{
       app.http('v1/user/editCity', {
-        openid: app.globalData.openid,
         name: this.data.name,
         mobile: this.data.mobile,
         detailed: this.data.detailed,

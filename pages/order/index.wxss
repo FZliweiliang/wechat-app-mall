@@ -16,8 +16,8 @@
   text-align: center;
 }
 .tab .active{
-  color: #D04244;
-  border-bottom: 1px solid #D04244;
+  color: #ff5f19;
+  border-bottom: 1px solid #ff5f19;
   padding-bottom:1.8vh;
 }
 
@@ -29,7 +29,7 @@
   display: flex;
   border-bottom: 1px solid #EDEDED;
   padding: 0 16px;
-  height: 118px;
+  height: 95px;
   align-items: center;
 }
 
@@ -45,8 +45,8 @@
 
 .list .content image{
   flex: 0 0 auto;
-  height: 94px;
-  width: 94px;
+  height: 76px;
+  width: 76px;
   padding-right:10px;
 }
 
@@ -56,7 +56,6 @@
 }
 
 .list .content .title{
-  height: 44px;
   overflow: hidden;
 }
 
@@ -74,12 +73,11 @@
 
 .list .content .price{
   display: flex;
-  font-size: 14px;
-  padding-top:10px; 
+  font-size: 16px;
 }
 
 .list .content .price text:nth-child(1){
-  color: #D04244;
+  color: #ff5f19;
   flex: 1 0 50%;
 }
 

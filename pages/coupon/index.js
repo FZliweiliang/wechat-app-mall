@@ -1,14 +1,16 @@
 // pages/coupon/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabIndex:1
+    tabIndex:1,
+    list:[],
   },
   tabFun(e){
-    console.log(e.currentTarget.dataset.index)
+    this.getList(e.currentTarget.dataset.index)
     this.setData({
       tabIndex: e.currentTarget.dataset.index
     })
@@ -16,8 +18,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  getList:function(id){
+    app.http('v1/user/couponList', {
+      state: id
+    }, "get")
+      .then(res => {
+        this.setData({
+          list:res.data
+        })
+      })
+  },
   onLoad: function (options) {
-  
+    this.getList(this.data.tabIndex)
+    app.http('/v1/user/getCoupon',{
+      id:"5b9b235f53b9af1484cbd54f"
+    },'POST').then(res=>{
+      
+    })
   },
 
   /**

@@ -7,7 +7,8 @@ Page({
    */
   data: {
     list:[],
-    id:''
+    id:'',
+    state:null,
   },
 
   /**
@@ -15,7 +16,6 @@ Page({
    */
   defaultFun:function(data){
     app.http('v1/user/defaultCity', {
-      openid: app.globalData.openid,
       id: data.currentTarget.dataset.item._id
     }, 'POST')
       .then(res => {
@@ -23,13 +23,18 @@ Page({
         this.setData({
           id: res.data._id
         })
+        if (this.data.state == 1){
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       })
   },
   onLoad: function (options) {
     this.setData({
-      id: app.globalData.userInfo.address._id
+      id: app.globalData.userInfo.address._id,
+      state: options ? options.type:null
     })
-   
   },
 
   /**

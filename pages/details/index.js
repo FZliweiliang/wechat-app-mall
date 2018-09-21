@@ -17,6 +17,7 @@ Page({
     duration: 1000,
     tabIs:true,
     specIs:false,
+    data:null
   },
   tabFun(e){
     console.log(e)
@@ -40,13 +41,35 @@ Page({
       specIs: !this.data.specIs
     })
   },
+  addCart(){
+    app.http('v1/order/addCart', {
+          id: this.data.data._id,
+          num: 1,
+          spec:['asdasasd'],
+          title: this.data.data.title,
+          img: this.data.data.img,
+          price: this.data.data.price
+         },"POST",)
+    .then(res=>{
+      console.log(res)
+      if(res.code == 200){
+        wx.showToast({
+          title: '已加入购物车',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+     })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     app.http('v1/home/getItem', { id: options.id})
     .then(res=>{
-      console.log(res.data)
+      this.setData({
+        data: res.data
+      })
     })
   },
 
@@ -61,7 +84,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**

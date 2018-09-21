@@ -13,14 +13,14 @@
         </block>
   </swiper>
   <view class='title'>
-    正牌猪猪侠草莓蛋糕/热卖款：四重奏蛋糕—2磅
+    {{data.title}}
     <view class='spec'>
-      188元/3磅238元/4磅278...
+    {{data.spec}}
     </view>
   </view>
   <view class='price'>
   <text>￥</text>
-  132.00-320.00
+  {{data.price}}
   </view>
   <view class='freight'>
     <view class='left'>
@@ -30,9 +30,9 @@
     销量：3424
     </view>
    </view> 
-   <view class='choice' bindtap='specFun'>
+   <!-- <view class='choice' bindtap='specFun'>
       规格：请选择蛋糕规格
-   </view>
+   </view> -->
    <view class='tab'>
     <view class='left' bindtap="tabFun" data-state="{{1}}">
       <text class='{{tabIs?"tab-acitve":""}}'>产品详情</text>
@@ -53,7 +53,8 @@
     <image src='/images/shopping_cart_return.png' style='width:20px;height:17px;'></image>
     <text>购物车</text>
 </view>
-<view class='btn' bindtap='specFun'>
+ <!-- bindtap='specFun' -->
+<view class='btn' bindtap='addCart'>
   加入购物车
 </view>
 <view class='btn' style='background: #FE4543;' bindtap='specFun'>

@@ -8,10 +8,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    imgUrls: [
-      'https://wx.yogalt.com/file/images/banner.jpg',
-      'https://wx.yogalt.com/file/images/banner2.jpg',
-    ],
+    imgUrls: null,
+    baseUrl:"https://wx.yogalt.com/",
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -23,6 +21,61 @@ Page({
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
+    })
+  },
+  addCart(data) {
+    let item = data.currentTarget.dataset.item
+    app.http('v1/order/addCart', {
+      id: item._id,
+      num: 1,
+      spec: ['asdasasd'],
+      title: item.title,
+      img: item.img,
+      price: item.price
+    }, "POST")
+      .then(res => {
+        console.log(res)
+        if (res.code == 200) {
+          wx.showToast({
+            title: '已加入购物车',
+            icon: 'success',
+            duration: 500
+          })
+        }
+      })
+  },
+  imgsc:function(e){
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths;
+        wx.uploadFile({
+          url: 'https://wx.yogalt.com/api/v1/admin/uploadBanner',      //此处换上你的接口地址
+          filePath: tempFilePaths[0],
+          name: 'inputFile',
+          header: {
+            "Content-Type": "multipart/form-data",
+            'accept': 'application/json',
+          },
+          formData: {
+            href:'www.baidu.com',           //跳转地址
+            name:'大蛋糕',           //名称
+            is_hide:true,       //是否显示
+            effective:'2018-09-14,2019-09-14',       //有效期
+          },
+          success: function (res) {
+            var data = res.data;
+            console.log('data');
+          },
+          fail: function (res) {
+            console.log('fail');
+
+          },
+        })
+      }
     })
   },
   lower:function(e){
@@ -45,15 +98,6 @@ Page({
           console.log(this.data)
         }
       })
-    wx.request({
-      url: 'https://wx.yogalt.com/api/',
-      data: {
-        page: this.data.page
-      },
-      success: (res) => {
-        
-      }
-    })
   },
   onLoad: function () {
     let app = getApp()
@@ -65,6 +109,18 @@ Page({
         imgUrls: res.data
       })
     })
+    // app.http('v1/admin/addCoupon',{
+    //   name:'节日蛋糕满200减50',
+    //   money:50,
+    //   effective: ['2018-09-10', '2018-09-10'],
+    //   category:'5b8f45f2afb7c17788e11994',
+    //   category_name:'节日',
+    //   condition: 200
+    // },"POST")
+    //   .then(res => {
+    //    console.log(res)
+    //   })
+    
     // wx.request({
     //   url: 'https://wx.yogalt.com/api/v1/admin/getClassList',
     //   success: (res) => {
@@ -92,15 +148,15 @@ Page({
     //   url: 'https://wx.yogalt.com/api/v1/admin/addItem',
     //   method:'POST',
     //   data:{
-    //     title:"party大蛋糕",
+    //     title:"中秋节大蛋糕",
     //     img:"https://wx.yogalt.com/file/images/img1.jpeg",
     //     spec:"1221123",
-    //     price:'99.2',
+    //     price:'990.2',
     //     num:999,
-    //     content:'2132123',
-    //     html: '2132123',
-    //     category:"5b8f4612afb7c17788e11998|party",
-    //      is_hot:true
+    //     content:'我是情人节大蛋糕',
+    //     html: '哈哈哈哈或',
+    //     category:"5b8f45f2afb7c17788e11994|节日",
+    //     is_hot:true
     //   },
     //   header:{
     //     'X-Requested-With': 'XMLHttpRequest',
@@ -159,7 +215,6 @@ Page({
     })
   },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

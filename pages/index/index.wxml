@@ -8,7 +8,7 @@
     >
       <block wx:for="{{imgUrls}}">
         <swiper-item>
-          <image src='{{item.img}}' style='width:100%;height:240px;' />
+          <image src='{{baseUrl+item.img_url}}' style='width:100%;height:220px;' />
         </swiper-item>
       </block>
   </swiper>
@@ -51,8 +51,11 @@
       </navigator>
       <view class='price'>
         <text>￥{{item.price}}</text>
-        <image src='/images/home_page n.png'></image>
+        <view  bindtap='addCart' data-item="{{item}}">
+        <image style='width:20px;height:20px;' src='/images/Shopping.png'></image>
+        </view>
       </view>
     </view>
   </view>
+  <!-- <button bindtap='imgsc'> 上传</button> -->
 </scroll-view>

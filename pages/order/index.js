@@ -1,4 +1,5 @@
 // pages/coupon/index.js
+const app = getApp()
 Page({
 
   /**
@@ -6,56 +7,17 @@ Page({
    */
   data: {
     tabIndex: 1,
-    list: [{ //商品列表
-      id: 2,
-      img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-      name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-      spec: "2磅，+19.9元得水果（中盒）…",
-      price: 999.00,
-      num: 2,
-      select: false,
-    },
-    {
-      id: 3,
-      img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-      name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-      spec: "2磅，+19.9元得水果（中盒）…",
-      price: 999.01,
-      num: 1,
-      select: false
-    },
-    {
-      id: 4,
-      img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-      name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-      spec: "2磅，+19.9元得水果（中盒）…",
-      price: 999.02,
-      num: 1,
-      select: false
-    },
-    {
-      id: 5,
-      img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-      name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-      spec: "2磅，+19.9元得水果（中盒）…",
-      price: 999.03,
-      num: 1,
-      select: false
-    },
-    {
-      id: 6,
-      img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-      name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-      spec: "2磅，+19.9元得水果（中盒）…",
-      price: 999.04,
-      num: 1,
-      select: false
-    }
-    ]
+    list: []
   },
   tabFun(e) {
     this.setData({
       tabIndex: e.currentTarget.dataset.index
+    })
+    this.getList()
+  },
+  getList(){
+    app.http('/v1/order/list', { state: this.data.tabIndex }).then(res => {
+      this.setData({list:res.data})
     })
   },
   /**
@@ -63,8 +25,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      tabIndex: options.type
+      tabIndex: options.type||1
     })
+    this.getList()
   },
 
   /**

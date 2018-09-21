@@ -14,10 +14,10 @@
         <image wx:if="{{item.select}}" src='/images/choice_y.png'></image>
         <image wx:else src='/images/choice_n.png'></image>
       </view>
-      <navigator class='content' hover-class="none" url="/pages/details/index?id=1">
+      <navigator class='content' hover-class="none" url="/pages/details/index?id={{item.id}}">
         <image src='{{item.img}}'></image>
         <view class='text'>
-          <view class='title'>{{item.name}}</view>
+          <view class='title'>{{item.title}}</view>
           <view class='spec'>{{item.spec}}</view>
           <view class='price'>
             <text>¥{{item.price}}</text>
@@ -64,7 +64,7 @@
         <view style='font-size: 10px;margin-right:10px;'>不含运费</view>
       </view>
     </view>
-    <view class='{{totalPrice>0.1?"right":"right prohibit"}}'  wx:if="{{!isEdit}}">
+    <view class='{{totalPrice>0.1?"right":"right prohibit"}}' bindtap="closeFun"  wx:if="{{!isEdit}}">
       结算
     </view>
     <view  class='{{totalPrice>0.1?"right":"right prohibit"}}' bindtap="delFun" wx:if="{{isEdit}}">

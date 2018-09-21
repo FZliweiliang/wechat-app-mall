@@ -9,7 +9,8 @@
     "pages/coupon/index",
     "pages/order/index",
     "pages/addressList/index",
-    "pages/addressAdd/index"
+    "pages/addressAdd/index",
+    "pages/orderDetails/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,7 +31,7 @@
         "text": "首页"
       },
       {
-        "selectedIconPath": "images/home_page n.png",
+        "selectedIconPath": "images/Shopping.png",
         "iconPath": "images/shopping_select.png",
         "pagePath": "pages/cart/index",
         "text": "购物车"

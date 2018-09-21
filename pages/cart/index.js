@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -6,52 +7,8 @@ Page({
   data: {
     total:false, //是否全选
     totalPrice:0, //总价
-    list:[{ //商品列表
-        id: 2,
-        img:'https://wx.yogalt.com/file/images/img1.jpeg',
-        name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-        spec:"2磅，+19.9元得水果（中盒）…",
-        price:999.00,
-        num:2,
-        select: false,
-      },
-      {
-        id: 3,
-        img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-        name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-        spec: "2磅，+19.9元得水果（中盒）…",
-        price: 999.01,
-        num: 1,
-        select: false
-      },
-      {
-        id: 4,
-        img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-        name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-        spec: "2磅，+19.9元得水果（中盒）…",
-        price: 999.02,
-        num: 1,
-        select: false
-      },
-      {
-        id: 5,
-        img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-        name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-        spec: "2磅，+19.9元得水果（中盒）…",
-        price: 999.03,
-        num: 1,
-        select: false
-      },
-      {
-        id: 6,
-        img: 'https://wx.yogalt.com/file/images/img1.jpeg',
-        name: "榴恋草莓蛋糕-2磅188元/138元/4磅298元（深圳）",
-        spec: "2磅，+19.9元得水果（中盒）…",
-        price: 999.04,
-        num: 1,
-        select: false
-      }
-    ]
+    list:[],
+    isEdit:false
   },
   totalPrice(){//计算总价
     let that = this
@@ -94,7 +51,11 @@ Page({
     let num = 0
     for (let i = 0; i < that.data.list.length;i++){
       if (that.data.list[i].id == e.currentTarget.dataset.id){
-        that.data.list[i].select = !that.data.list[i].select
+        if (!that.data.list[i].select){
+          that.data.list[i].select =  true
+        }else{
+          that.data.list[i].select = !that.data.list[i].select
+        }
         that.setData({
           list: that.data.list
         })
@@ -119,6 +80,14 @@ Page({
     this.setData({
       isEdit: !this.data.isEdit
     })
+
+    if (!this.data.isEdit){
+      console.log(this.data.list)
+      app.http('v1/order/editCart',{list:this.data.list},"POST")
+      .then(res=>{
+        console.log(res)
+      })
+    }
   },
   plusFun(item){ //增加商品数量
     this.data.list.map((v,k)=>{
@@ -126,6 +95,7 @@ Page({
           this.data.list[k].num++
       }
     })
+
     this.setData({
       list: this.data.list
     })
@@ -149,11 +119,13 @@ Page({
   delItemFun(item){ //删除单商品
     
     let id = item.target?item.target.dataset.item.id:item.id
+
     this.data.list.map((v, k) => {
       if (v.id == id) {
         this.data.list.splice(k,1)
       }
     })
+
     this.setData({
       list: this.data.list
     })
@@ -162,24 +134,42 @@ Page({
   },
   delFun(){ //选中删除
     let list  = []
-    this.data.list.map((v, k) => {
-        list.push(v)
-    })
 
-    list.map((v, k) => {
-      if (v.select){
-        list.splice(k,1)
+    this.data.list.map((v, k) => {
+      if (!v.select){
+        list.push(v)
       }
     })
 
+    this.setData({
+      list: list
+    })
 
-    console.log(list)
-    // this.setData({
-    //   list: list
-    // })
+    this.totalPrice()
 
-    // this.totalPrice()
-
+  },
+  closeFun:function(){
+    let list = []
+    let listTotal = []
+    this.data.list.map((v, k) => {
+      if (v.select) {
+        list.push(v)
+      }else{
+        listTotal.push(v)
+      }
+    })
+    app.http('v1/order/set', { goods: list},"POST").then(res=>{
+      if(res.code == 200){
+        app.http('v1/order/editCart', { list: listTotal }, "POST")
+        .then(res => {
+          console.log(res)
+        })
+        wx.navigateTo({
+          url: "/pages/orderDetails/index?id=" + res.data._id
+        });
+      }
+    })
+   
   },
   /**
    * 生命周期函数--监听页面加载
@@ -199,7 +189,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    app.http('v1/order/cartList').then(res=>{
+      console.log(res.data)
+      let list = []
+      res.data.map((v, k)=>{
+        list.push({
+          img:v.img,
+          num:v.num,
+          price:v.price,
+          spec:v.spec,
+          title:v.title,
+          id:v.id,
+          select:false
+        })
+      })
+      this.setData({
+        list: list,
+        total:false,
+        totalPrice: 0,
+      })
+    })
   },
 
   /**

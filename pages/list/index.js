@@ -14,7 +14,27 @@ Page({
     mount:false,
     page:1
   },
-  
+  addCart(data) {
+    let item = data.currentTarget.dataset.item
+    app.http('v1/order/addCart', {
+      id: item._id,
+      num: 1,
+      spec: ['asdasasd'],
+      title: item.title,
+      img: item.img,
+      price: item.price
+    }, "POST")
+      .then(res => {
+        console.log(res)
+        if (res.code == 200) {
+          wx.showToast({
+            title: '已加入购物车',
+            icon: 'success',
+            duration: 500
+          })
+        }
+      })
+  },
   sortFun(data) {
     this.setData({
       sortActive: data.currentTarget.dataset.data,
