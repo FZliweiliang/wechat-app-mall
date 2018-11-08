@@ -12,8 +12,6 @@
 
 >  服务端:https://github.com/FZliweiliang/wechat-app-mall-server
 
->  此项目会一直持续更新 后期会使用node提供服务
-
 >  提示小程序大于2M可以把screenshot文件夹删除
 ```
 
