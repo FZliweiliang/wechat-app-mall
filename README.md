@@ -10,7 +10,7 @@
 
 >  配置HTTPS：https://juejin.im/post/5b88b58151882542db3bedf7
 
->  服务端:https://github.com/FZliweiliang/wechat-app-mall-server(正在开发中)
+>  服务端:https://github.com/FZliweiliang/wechat-app-mall-server
 
 >  此项目会一直持续更新 后期会使用node提供服务
 
